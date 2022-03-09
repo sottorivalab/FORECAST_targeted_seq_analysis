@@ -231,7 +231,7 @@ do.call(rbind, lapply(mutation_data, function(i) {
 }))
 
 #################################################################################################################
-##### 4 - Assess subclonality of mutations in the cohort ########################################################
+##### 3 - Assess subclonality of mutations in the cohort ########################################################
 #################################################################################################################
 
 # Filter data by cohort frequency to avoid SSARs reads
@@ -282,7 +282,7 @@ names(subclonality_summary) = genes
 saveRDS(subclonality_summary, file = "results/mutation_calling/subclonality_assessment_indels.rds")
 
 #################################################################################################################
-##### 5 - Per sample annotation of mutation status per gene #####################################################
+##### 4 - Per sample annotation of mutation status per gene #####################################################
 #################################################################################################################
 
 # Read in patients where there was a normal
