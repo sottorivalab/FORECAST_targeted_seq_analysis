@@ -13,9 +13,6 @@ source("scripts/00-general_functions.R")
 # Where is the pipeline?
 pipe_root = "targeted_snakemake/"
 
-# Where is the low pass repo?
-low_pass_repo = "low_pass_repo/"
-
 # Which patients are blacklisted for mutation analysis?
 blacklist_patients = c("IM1255", "IM1388")
 # Which sample has posthoc been considered to be not tumour?
@@ -214,6 +211,9 @@ mutation_data = lapply(1:length(mutations), function(s) {
 
 # Add patient names to mutation data list
 names(mutation_data) = unlist(lapply(strsplit(basename(files), split = "_"), function(i) i[1]))
+
+# Remove those on the blacklist
+mutation_data = mutation_data[!names(mutation_data) %in% blacklist_patients]
 
 # Show the user which mutations have survived filtering
 do.call(rbind, lapply(mutation_data, function(i) {
