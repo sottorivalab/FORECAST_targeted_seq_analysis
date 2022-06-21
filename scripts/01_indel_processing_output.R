@@ -14,10 +14,10 @@ source("scripts/00-general_functions.R")
 pipe_root = "targeted_snakemake/"
 
 # Which patients are blacklisted for mutation analysis?
-blacklist_patients = c("IM1255", "IM1388")
+blacklist_patients = c("", "")
 # Which sample has posthoc been considered to be not tumour?
-forced_out  = c("IM1017")
-forced_norm = c("B2_DW1")
+forced_out  = c("")
+forced_norm = c("")
 # Minimum number of samples
 min_samples = 3
 # Cohort frequency filtering, make it Inf to not subset
