@@ -34,7 +34,7 @@ meanFromFreqTable = function(df, value_col = 1, count_col = 2) {
 # Extract patient name
 extractPatientName = function(x) {unlist(lapply(strsplit(x, split = "_"), function(i) i[1]))}
 
-# Genes in this study on the panel
+# Genes in this study that are on the panel
 genes = c("AKT1",
           "CDKN1B",
           "PTEN",
