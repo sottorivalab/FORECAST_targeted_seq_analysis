@@ -346,6 +346,9 @@ per_sample_mutation = cbind(samples_of_interest, per_sample_mutation)
 write.table(per_sample_mutation, file = "results/mutation_calling/Per_sample_gene_mutation_status_indels.txt", 
             sep = "\t", quote = F, row.names = F)
 
+# Write out the passing mutations object for LOH analysis
+saveRDS(passing_mutations, file = "results/mutation_calling/Passing_mutations_list_indels.rds")
+
 # Write out a melted version of the passing mutations that contains the mutation itself
 per_sample_mutation_with_change = do.call(rbind, lapply(passing_mutations, function(i) {
   
