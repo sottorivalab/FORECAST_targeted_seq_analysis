@@ -63,3 +63,25 @@ genes = c("AKT1",
           "PIK3CA",
           "PIK3R1",
           "PALB2")
+
+# Calculate number of mutant copies
+calculateCopies = function(V, C, r, exp_norm_cn = 2) {
+  # Assumes CCF is 1
+  (V * (((C - exp_norm_cn)*r)+exp_norm_cn)) / r
+}
+
+# Get simple clonal LOH assessment
+isitLOH = function(V, C, r, exp_norm_cn = 2) {
+  copies = calculateCopies(V = V, C = C, r = r, exp_norm_cn = exp_norm_cn)
+  copies > (C - 0.5)
+}
+
+# Make location dataframe from chr pos rownames
+extractChrRows = function(x) {
+  m = do.call(rbind, strsplit(x, split = "[:]|-"))
+  df = data.frame(chr = m[,1],
+                  start = as.integer(m[,2]),
+                  end = as.integer(m[,3]))
+  df$chr = factor(df$chr, levels = c(1:22, "X", "Y"))
+  return(df)
+}
