@@ -577,6 +577,9 @@ for(p in all_patients) {
 write.table(subclonal_driver, file = "results/mutation_calling/Subclonal_driver_status_summary.txt",
             quote = F, row.names = F, sep = "\t")
 
+# Write out the passing mutations object for LOH analysis
+saveRDS(passing_mutations, file = "results/mutation_calling/Passing_mutations_list_snvs.rds")
+
 # Write out a melted version of the passing mutations that contains the mutation itself
 per_sample_mutation_with_change = do.call(rbind, 
                                           lapply(passing_mutations, 
